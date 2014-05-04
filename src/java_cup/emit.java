@@ -374,9 +374,9 @@ public class emit {
       out.println(
        "/** Cup generated class to encapsulate user supplied action code.*/"
       );  
-      out.println("@SuppressWarnings({\"rawtypes\", \"unchecked\", \"unused\"})");
+      out.println("@SuppressWarnings({\"unchecked\", \"unused\"})");
       /* TUM changes; proposed by Henning Niss 20050628: added type arguement */
-      out.println("class " +  pre("actions") + typeArgument() + " {");
+      out.println("private class " +  pre("actions") + typeArgument() + " {");
       /* user supplied code */
       if (action_code != null)
 	{
@@ -1029,11 +1029,11 @@ public class emit {
           out.println(parser_code);
 	}
 
-      /* end of class */
-      out.println("}");
-
       /* put out the action code class */
       emit_action_code(out, start_prod);
+
+      /* end of class */
+      out.println("}");
 
       parser_time = System.currentTimeMillis() - start_time;
     }
